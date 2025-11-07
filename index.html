@@ -209,7 +209,7 @@
         
         <div class="downloads-section">
             <h2><span class="highlight">Download Portfolio Analysis Software</span></h2>
-            <p style="color: #657786; margin-bottom: 24px;">
+            <p style="color: #657786; margin-bottom: 32px; font-size: 1.05em;">
                 Official portfolio analysis and tracking software for the Student Managed Investment Committee. 
                 Monitor portfolio performance, sector allocation, and returns analysis.
             </p>
@@ -217,23 +217,37 @@
             <div class="download-item">
                 <h3>Windows</h3>
                 <p>For Windows 10/11 (64-bit). Standalone executable - no installation required.</p>
-                <a href="https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis.exe" class="download-link" id="windows-download" download>
-                    Download for Windows (.exe)
-                </a>
-                <p style="margin-top: 8px; font-size: 0.9em; color: #aab8c2;">
+                <div style="margin: 20px 0;">
+                    <a href="https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis.exe" 
+                       class="download-link" 
+                       id="windows-download" 
+                       download
+                       style="font-size: 1.1em; padding: 16px 32px;">
+                        ⬇ Download for Windows (.exe)
+                    </a>
+                </div>
+                <p style="margin-top: 12px; font-size: 0.9em; color: #aab8c2;">
                     <a href="https://github.com/SMIC-GCSU/portfolio/releases" class="github-link" target="_blank">View all releases →</a>
                 </p>
+                <p id="windows-status" style="margin-top: 8px; font-size: 0.85em; color: #657786;"></p>
             </div>
             
             <div class="download-item">
                 <h3>macOS</h3>
                 <p>For macOS 10.15+ (Intel and Apple Silicon). Application bundle.</p>
-                <a href="https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis_macos.zip" class="download-link" id="macos-download" download>
-                    Download for macOS (.app)
-                </a>
-                <p style="margin-top: 8px; font-size: 0.9em; color: #aab8c2;">
+                <div style="margin: 20px 0;">
+                    <a href="https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis_macos.zip" 
+                       class="download-link" 
+                       id="macos-download" 
+                       download
+                       style="font-size: 1.1em; padding: 16px 32px;">
+                        ⬇ Download for macOS (.app)
+                    </a>
+                </div>
+                <p style="margin-top: 12px; font-size: 0.9em; color: #aab8c2;">
                     <a href="https://github.com/SMIC-GCSU/portfolio/releases" class="github-link" target="_blank">View all releases →</a>
                 </p>
+                <p id="macos-status" style="margin-top: 8px; font-size: 0.85em; color: #657786;"></p>
             </div>
         </div>
         
@@ -288,34 +302,57 @@
     </div>
     
     <script>
-        // Check if downloads are available
+        // Check if downloads are available and update UI
         async function checkDownloads() {
+            const windowsUrl = 'https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis.exe';
+            const macosUrl = 'https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis_macos.zip';
+            
+            // Check Windows download
             try {
-                const windowsUrl = 'https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis.exe';
-                const macosUrl = 'https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis_macos.zip';
-                
-                // Check Windows download
-                const windowsResponse = await fetch(windowsUrl, { method: 'HEAD' });
-                if (!windowsResponse.ok) {
-                    document.getElementById('windows-download').classList.add('disabled');
-                    document.getElementById('windows-download').href = '#';
-                    document.getElementById('windows-download').onclick = (e) => e.preventDefault();
-                }
-                
-                // Check macOS download
-                const macosResponse = await fetch(macosUrl, { method: 'HEAD' });
-                if (!macosResponse.ok) {
-                    document.getElementById('macos-download').classList.add('disabled');
-                    document.getElementById('macos-download').href = '#';
-                    document.getElementById('macos-download').onclick = (e) => e.preventDefault();
-                }
+                const windowsResponse = await fetch(windowsUrl, { method: 'HEAD', mode: 'no-cors' });
+                document.getElementById('windows-status').textContent = '✓ Available for download';
+                document.getElementById('windows-status').style.color = '#1da1f2';
             } catch (error) {
-                console.log('Download availability check failed:', error);
+                // Try alternative check
+                fetch(windowsUrl, { method: 'GET', mode: 'no-cors' })
+                    .then(() => {
+                        document.getElementById('windows-status').textContent = '✓ Available for download';
+                        document.getElementById('windows-status').style.color = '#1da1f2';
+                    })
+                    .catch(() => {
+                        document.getElementById('windows-status').textContent = 'Release not yet available. Check back soon!';
+                        document.getElementById('windows-status').style.color = '#aab8c2';
+                    });
+            }
+            
+            // Check macOS download
+            try {
+                const macosResponse = await fetch(macosUrl, { method: 'HEAD', mode: 'no-cors' });
+                document.getElementById('macos-status').textContent = '✓ Available for download';
+                document.getElementById('macos-status').style.color = '#1da1f2';
+            } catch (error) {
+                // Try alternative check
+                fetch(macosUrl, { method: 'GET', mode: 'no-cors' })
+                    .then(() => {
+                        document.getElementById('macos-status').textContent = '✓ Available for download';
+                        document.getElementById('macos-status').style.color = '#1da1f2';
+                    })
+                    .catch(() => {
+                        document.getElementById('macos-status').textContent = 'Release not yet available. Check back soon!';
+                        document.getElementById('macos-status').style.color = '#aab8c2';
+                    });
             }
         }
         
         // Run check on page load
-        window.addEventListener('load', checkDownloads);
+        window.addEventListener('load', function() {
+            // Set initial status
+            document.getElementById('windows-status').textContent = 'Checking availability...';
+            document.getElementById('macos-status').textContent = 'Checking availability...';
+            
+            // Check downloads
+            setTimeout(checkDownloads, 500);
+        });
     </script>
 </body>
 </html>
