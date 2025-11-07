@@ -12,152 +12,304 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1a1a1a;
             line-height: 1.6;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px;
+            padding: 60px 20px;
+        }
+        
+        header {
             text-align: center;
-        }
-        
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 60px 40px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            animation: fadeIn 0.8s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            margin-bottom: 60px;
         }
         
         h1 {
-            color: #667eea;
             font-size: 3em;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             font-weight: 700;
+            color: #1a1a1a;
         }
         
         .subtitle {
-            color: #666;
             font-size: 1.3em;
-            margin-bottom: 10px;
+            color: #657786;
+            margin-bottom: 8px;
         }
         
         .org-name {
-            color: #764ba2;
-            font-weight: 600;
+            color: #657786;
+            font-weight: 400;
+        }
+        
+        .downloads-section {
+            background: #ffffff;
+            border: 1px solid #e1e8ed;
+            border-radius: 12px;
+            padding: 40px;
             margin-bottom: 40px;
         }
         
-        .description {
-            color: #555;
-            font-size: 1.1em;
-            margin-bottom: 50px;
+        .downloads-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+        
+        .download-item {
+            margin: 30px 0;
+            padding: 24px;
+            background: #f7f9fa;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .download-item:hover {
+            border-color: #1a1a1a;
+            background: #ffffff;
+        }
+        
+        .download-item h3 {
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+        
+        .download-item p {
+            color: #657786;
+            margin-bottom: 16px;
+            font-size: 0.95em;
+        }
+        
+        .download-link {
+            display: inline-block;
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-size: 1em;
+        }
+        
+        .download-link:hover {
+            background: #000000;
+            transform: translateY(-1px);
+        }
+        
+        .download-link.disabled {
+            background: #aab8c2;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .download-link.disabled:hover {
+            transform: none;
+        }
+        
+        .info-section {
+            background: #ffffff;
+            border: 1px solid #e1e8ed;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .info-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+        
+        .info-section p {
+            color: #657786;
+            margin-bottom: 16px;
             line-height: 1.8;
         }
         
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 18px 50px;
-            border-radius: 50px;
+        .info-section ul {
+            color: #657786;
+            margin-left: 24px;
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+        
+        .info-section li {
+            margin-bottom: 8px;
+        }
+        
+        .github-link {
+            color: #1da1f2;
             text-decoration: none;
-            font-size: 1.2em;
             font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            margin: 10px;
         }
         
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-        }
-        
-        .cta-button:active {
-            transform: translateY(0);
-        }
-        
-        .footer {
-            margin-top: 50px;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.9em;
-        }
-        
-        .footer a {
-            color: rgba(255, 255, 255, 0.9);
+        .github-link:hover {
             text-decoration: underline;
         }
         
-        .logo {
-            font-size: 4em;
-            margin-bottom: 20px;
+        .publisher-info {
+            background: #f7f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #1a1a1a;
+        }
+        
+        .publisher-info strong {
+            color: #1a1a1a;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #657786;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+        
+        .highlight {
+            color: #1da1f2;
+            font-weight: 600;
         }
         
         @media (max-width: 768px) {
             .container {
-                padding: 20px;
+                padding: 40px 20px;
             }
             
             h1 {
                 font-size: 2em;
             }
             
-            .card {
-                padding: 40px 30px;
-            }
-            
-            .cta-button {
-                display: block;
-                margin: 15px 0;
+            .downloads-section,
+            .info-section {
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="card">
-            <div class="logo">📊</div>
+        <header>
             <h1>SMIC-GCSU</h1>
             <p class="subtitle">Student Managed Investment Committee</p>
             <p class="org-name">Georgia College & State University</p>
-            
-            <p class="description">
-                Official portfolio analysis and tracking platform for the Student Managed Investment Committee. 
-                Monitor portfolio performance, sector allocation, and returns analysis in real-time.
+        </header>
+        
+        <div class="downloads-section">
+            <h2><span class="highlight">Download Portfolio Analysis Software</span></h2>
+            <p style="color: #657786; margin-bottom: 24px;">
+                Official portfolio analysis and tracking software for the Student Managed Investment Committee. 
+                Monitor portfolio performance, sector allocation, and returns analysis.
             </p>
             
-            <a href="https://smic-gcsu.github.io/portfolio/" class="cta-button">
-                View Portfolio Analysis →
-            </a>
+            <div class="download-item">
+                <h3>Windows</h3>
+                <p>For Windows 10/11 (64-bit). Standalone executable - no installation required.</p>
+                <a href="https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis.exe" class="download-link" id="windows-download">
+                    Download for Windows (.exe)
+                </a>
+            </div>
             
-            <div class="footer">
-                <p>© 2024-2025 SMIC-GCSU | Georgia College & State University</p>
-                <p>
-                    <a href="https://github.com/SMIC-GCSU/portfolio">View on GitHub</a>
-                </p>
+            <div class="download-item">
+                <h3>macOS</h3>
+                <p>For macOS 10.15+ (Intel and Apple Silicon). Application bundle.</p>
+                <a href="https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis_macos.zip" class="download-link" id="macos-download">
+                    Download for macOS (.app)
+                </a>
             </div>
         </div>
+        
+        <div class="info-section">
+            <h2>About the Software</h2>
+            <p>
+                The SMIC Portfolio Analysis Tool is a comprehensive desktop application designed for tracking and analyzing 
+                the Student Managed Investment Committee's portfolio performance. It provides real-time portfolio valuation, 
+                sector allocation analysis, performance metrics, and detailed reporting.
+            </p>
+            
+            <h3 style="margin-top: 30px; margin-bottom: 16px; color: #1a1a1a;">Features</h3>
+            <ul>
+                <li>Real-time portfolio value tracking</li>
+                <li>Sector allocation analysis with drift visualization</li>
+                <li>Performance comparison with S&P 500 benchmark</li>
+                <li>ETF vs Individual Stocks breakdown by sector</li>
+                <li>Interactive charts and visualizations</li>
+                <li>Comprehensive statistics and reporting</li>
+                <li>Export capabilities for reports and data</li>
+            </ul>
+            
+            <h3 style="margin-top: 30px; margin-bottom: 16px; color: #1a1a1a;">Installation</h3>
+            <p><strong>Windows:</strong> Download the .exe file and run it directly. No installation required.</p>
+            <p><strong>macOS:</strong> Download the .zip file, extract it, and move the .app to your Applications folder. 
+            You may need to allow the app in System Preferences > Security & Privacy on first launch.</p>
+            
+            <div class="publisher-info">
+                <p><strong>Publisher:</strong> Joel Saucedo - GCSU Student Managed Investment Committee Managing Director</p>
+                <p><strong>Copyright:</strong> Copyright (C) 2024-2025 Joel Saucedo, GCSU Student Managed Investment Committee. All rights reserved.</p>
+                <p><strong>Version:</strong> 1.0.0</p>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h2>Open Source</h2>
+            <p>
+                This software is open source and available on GitHub. View the source code, report issues, 
+                or contribute to the project:
+            </p>
+            <p>
+                <a href="https://github.com/SMIC-GCSU/portfolio" class="github-link" target="_blank">
+                    View on GitHub →
+                </a>
+            </p>
+        </div>
+        
+        <footer>
+            <p>SMIC-GCSU - Georgia College & State University</p>
+            <p>© 2024-2025 Joel Saucedo, GCSU Student Managed Investment Committee</p>
+        </footer>
     </div>
+    
+    <script>
+        // Check if downloads are available
+        async function checkDownloads() {
+            try {
+                const windowsUrl = 'https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis.exe';
+                const macosUrl = 'https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis_macos.zip';
+                
+                // Check Windows download
+                const windowsResponse = await fetch(windowsUrl, { method: 'HEAD' });
+                if (!windowsResponse.ok) {
+                    document.getElementById('windows-download').classList.add('disabled');
+                    document.getElementById('windows-download').href = '#';
+                    document.getElementById('windows-download').onclick = (e) => e.preventDefault();
+                }
+                
+                // Check macOS download
+                const macosResponse = await fetch(macosUrl, { method: 'HEAD' });
+                if (!macosResponse.ok) {
+                    document.getElementById('macos-download').classList.add('disabled');
+                    document.getElementById('macos-download').href = '#';
+                    document.getElementById('macos-download').onclick = (e) => e.preventDefault();
+                }
+            } catch (error) {
+                console.log('Download availability check failed:', error);
+            }
+        }
+        
+        // Run check on page load
+        window.addEventListener('load', checkDownloads);
+    </script>
 </body>
 </html>
-
