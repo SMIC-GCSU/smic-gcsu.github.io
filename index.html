@@ -202,13 +202,13 @@
 <body>
     <div class="container">
         <header>
-            <h1>SMIC-GCSU</h1>
+            <h1>Portfolio Software</h1>
             <p class="subtitle">Student Managed Investment Committee</p>
             <p class="org-name">Georgia College & State University</p>
         </header>
         
         <div class="downloads-section">
-            <h2><span class="highlight">Download Portfolio Analysis Software</span></h2>
+            <h2><span class="highlight">Portfolio Analysis Software</span></h2>
             <p style="color: #657786; margin-bottom: 32px; font-size: 1.05em;">
                 Official portfolio analysis and tracking software for the Student Managed Investment Committee. 
                 Monitor portfolio performance, sector allocation, and returns analysis.
@@ -216,14 +216,14 @@
             
             <div class="download-item">
                 <h3>Windows</h3>
-                <p>For Windows 10/11 (64-bit). Standalone executable - no installation required.</p>
+                <p>For Windows 10/11 (64-bit). Includes executable and data files.</p>
                 <div style="margin: 20px 0;">
-                    <a href="https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis.exe" 
+                    <a href="https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis_windows.zip" 
                        class="download-link" 
                        id="windows-download" 
                        download
                        style="font-size: 1.1em; padding: 16px 32px;">
-                        ⬇ Download for Windows (.exe)
+                        ⬇ Download for Windows (.zip)
                     </a>
                 </div>
                 <p style="margin-top: 12px; font-size: 0.9em; color: #aab8c2;">
@@ -234,14 +234,14 @@
             
             <div class="download-item">
                 <h3>macOS</h3>
-                <p>For macOS 10.15+ (Intel and Apple Silicon). Application bundle.</p>
+                <p>For macOS 10.15+ (Intel and Apple Silicon). Includes application bundle and data files.</p>
                 <div style="margin: 20px 0;">
                     <a href="https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis_macos.zip" 
                        class="download-link" 
                        id="macos-download" 
                        download
                        style="font-size: 1.1em; padding: 16px 32px;">
-                        ⬇ Download for macOS (.app)
+                        ⬇ Download for macOS (.zip)
                     </a>
                 </div>
                 <p style="margin-top: 12px; font-size: 0.9em; color: #aab8c2;">
@@ -271,8 +271,8 @@
             </ul>
             
             <h3 style="margin-top: 30px; margin-bottom: 16px; color: #1a1a1a;">Installation</h3>
-            <p><strong>Windows:</strong> Download the .exe file and run it directly. No installation required.</p>
-            <p><strong>macOS:</strong> Download the .zip file, extract it, and move the .app to your Applications folder. 
+            <p><strong>Windows:</strong> Extract the .zip file and run `SMIC_Portfolio_Analysis.exe`. The zip includes the executable and `data/transactions.csv` file.</p>
+            <p><strong>macOS:</strong> Extract the .zip file and move the .app to your Applications folder. The zip includes the application bundle and `transactions.csv` file. 
             You may need to allow the app in System Preferences > Security & Privacy on first launch.</p>
             
             <div class="publisher-info">
@@ -304,20 +304,18 @@
     <script>
         // Check if downloads are available and update UI
         async function checkDownloads() {
-            const windowsUrl = 'https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis.exe';
+            const windowsUrl = 'https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis_windows.zip';
             const macosUrl = 'https://github.com/SMIC-GCSU/portfolio/releases/latest/download/SMIC_Portfolio_Analysis_macos.zip';
             
             // Check Windows download
             try {
                 const windowsResponse = await fetch(windowsUrl, { method: 'HEAD', mode: 'no-cors' });
-                document.getElementById('windows-status').textContent = '✓ Available for download';
-                document.getElementById('windows-status').style.color = '#1da1f2';
+                document.getElementById('windows-status').textContent = '';
             } catch (error) {
                 // Try alternative check
                 fetch(windowsUrl, { method: 'GET', mode: 'no-cors' })
                     .then(() => {
-                        document.getElementById('windows-status').textContent = '✓ Available for download';
-                        document.getElementById('windows-status').style.color = '#1da1f2';
+                        document.getElementById('windows-status').textContent = '';
                     })
                     .catch(() => {
                         document.getElementById('windows-status').textContent = 'Release not yet available. Check back soon!';
@@ -328,14 +326,12 @@
             // Check macOS download
             try {
                 const macosResponse = await fetch(macosUrl, { method: 'HEAD', mode: 'no-cors' });
-                document.getElementById('macos-status').textContent = '✓ Available for download';
-                document.getElementById('macos-status').style.color = '#1da1f2';
+                document.getElementById('macos-status').textContent = '';
             } catch (error) {
                 // Try alternative check
                 fetch(macosUrl, { method: 'GET', mode: 'no-cors' })
                     .then(() => {
-                        document.getElementById('macos-status').textContent = '✓ Available for download';
-                        document.getElementById('macos-status').style.color = '#1da1f2';
+                        document.getElementById('macos-status').textContent = '';
                     })
                     .catch(() => {
                         document.getElementById('macos-status').textContent = 'Release not yet available. Check back soon!';
@@ -346,10 +342,6 @@
         
         // Run check on page load
         window.addEventListener('load', function() {
-            // Set initial status
-            document.getElementById('windows-status').textContent = 'Checking availability...';
-            document.getElementById('macos-status').textContent = 'Checking availability...';
-            
             // Check downloads
             setTimeout(checkDownloads, 500);
         });
